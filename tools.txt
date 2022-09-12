@@ -1,0 +1,5 @@
+12-9-2022 Brutforcing
+
+--dns
+	gobuster /dns brutforcing 
+	dnsrecon
