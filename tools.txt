@@ -1,5 +1,9 @@
 12-9-2022 Brutforcing
 
+--subdomain (general 2)
+	https://www.nmmapper.com/sys/tools/subdomainfinder/
+
+
 --dns
 	gobuster /dns brutforcing 
 	dnsrecon
